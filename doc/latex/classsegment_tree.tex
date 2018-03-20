@@ -1,0 +1,156 @@
+\hypertarget{classsegment_tree}{}\section{segment\+Tree$<$ d\+Type, t\+Type, upd, pushd $>$ Class Template Reference}
+\label{classsegment_tree}\index{segment\+Tree$<$ d\+Type, t\+Type, upd, pushd $>$@{segment\+Tree$<$ d\+Type, t\+Type, upd, pushd $>$}}
+
+
+Segment tree definition.  
+
+
+
+
+{\ttfamily \#include $<$segtree.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsegment_tree_ab4520ca7991d68d7c2507c54b030b0f9}{segment\+Tree}} (int l, int r)
+\begin{DoxyCompactList}\small\item\em Constructor of segment tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsegment_tree_a9e872bdd920fb80c2444f3bf84419947}\label{classsegment_tree_a9e872bdd920fb80c2444f3bf84419947}} 
+\mbox{\hyperlink{classsegment_tree_a9e872bdd920fb80c2444f3bf84419947}{$\sim$segment\+Tree}} ()
+\begin{DoxyCompactList}\small\item\em Destructor of segment tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsegment_tree_a39aaff1b005ca0487cda0943ed295536}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear all elements in the segment tree. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsegment_tree_a4b043b0364ab05a79dcb716bc6fce205}{replace}} (int pos, const d\+Type \&val)
+\begin{DoxyCompactList}\small\item\em Replace a single spot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsegment_tree_a087d22f6a87884aa2d73c10f1de4bca3}{modify}} (int l, int r, const t\+Type \&tag)
+\begin{DoxyCompactList}\small\item\em Modify a range with tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsegment_tree_a65af68c2e74e4b76786a4b0a021969e4}{modify}} (int pos, const t\+Type \&tag)
+\begin{DoxyCompactList}\small\item\em Modify a single element with tag. \end{DoxyCompactList}\item 
+d\+Type \mbox{\hyperlink{classsegment_tree_aba65a5a01fbca0df3e5a0aa541ca8111}{query}} (int l, int r)
+\begin{DoxyCompactList}\small\item\em Query (merge a range of values) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classsegment_tree_a5fd3b63f53f60739b5244c7a1687a0e6}\label{classsegment_tree_a5fd3b63f53f60739b5244c7a1687a0e6}} 
+d\+Type {\bfseries query} (int pos)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class d\+Type = int, class t\+Type = add\+Tag$<$d\+Type$>$, class upd = add\+Update, class pushd = add\+Pushdown$>$\newline
+class segment\+Tree$<$ d\+Type, t\+Type, upd, pushd $>$}
+
+Segment tree definition. 
+
+\begin{DoxyAuthor}{Author}
+\href{mailto:changyuz@usc.edu}{\tt changyuz@usc.\+edu} 
+\end{DoxyAuthor}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em d\+Type} & The type of data to store in the segment tree \\
+\hline
+{\em t\+Type} & The type of tag for range queries \\
+\hline
+{\em upd} & The update function \\
+\hline
+{\em pushd} & The pushdown function for tags \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classsegment_tree_ab4520ca7991d68d7c2507c54b030b0f9}\label{classsegment_tree_ab4520ca7991d68d7c2507c54b030b0f9}} 
+\index{segment\+Tree@{segment\+Tree}!segment\+Tree@{segment\+Tree}}
+\index{segment\+Tree@{segment\+Tree}!segment\+Tree@{segment\+Tree}}
+\subsubsection{\texorpdfstring{segment\+Tree()}{segmentTree()}}
+{\footnotesize\ttfamily template$<$class d\+Type  = int, class t\+Type  = add\+Tag$<$d\+Type$>$, class upd  = add\+Update, class pushd  = add\+Pushdown$>$ \\
+\mbox{\hyperlink{classsegment_tree}{segment\+Tree}}$<$ d\+Type, t\+Type, upd, pushd $>$\+::\mbox{\hyperlink{classsegment_tree}{segment\+Tree}} (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of segment tree. 
+
+Range is \mbox{[}l, r\mbox{]} 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classsegment_tree_a39aaff1b005ca0487cda0943ed295536}\label{classsegment_tree_a39aaff1b005ca0487cda0943ed295536}} 
+\index{segment\+Tree@{segment\+Tree}!clear@{clear}}
+\index{clear@{clear}!segment\+Tree@{segment\+Tree}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$class d\+Type  = int, class t\+Type  = add\+Tag$<$d\+Type$>$, class upd  = add\+Update, class pushd  = add\+Pushdown$>$ \\
+void \mbox{\hyperlink{classsegment_tree}{segment\+Tree}}$<$ d\+Type, t\+Type, upd, pushd $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clear all elements in the segment tree. 
+
+The range of the tree remains unchanged. \mbox{\Hypertarget{classsegment_tree_a087d22f6a87884aa2d73c10f1de4bca3}\label{classsegment_tree_a087d22f6a87884aa2d73c10f1de4bca3}} 
+\index{segment\+Tree@{segment\+Tree}!modify@{modify}}
+\index{modify@{modify}!segment\+Tree@{segment\+Tree}}
+\subsubsection{\texorpdfstring{modify()}{modify()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class d\+Type  = int, class t\+Type  = add\+Tag$<$d\+Type$>$, class upd  = add\+Update, class pushd  = add\+Pushdown$>$ \\
+void \mbox{\hyperlink{classsegment_tree}{segment\+Tree}}$<$ d\+Type, t\+Type, upd, pushd $>$\+::modify (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{r,  }\item[{const t\+Type \&}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Modify a range with tag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & start pos of modification \\
+\hline
+{\em r} & end pos of modification \\
+\hline
+{\em tag} & tag to add to the range \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsegment_tree_a65af68c2e74e4b76786a4b0a021969e4}\label{classsegment_tree_a65af68c2e74e4b76786a4b0a021969e4}} 
+\index{segment\+Tree@{segment\+Tree}!modify@{modify}}
+\index{modify@{modify}!segment\+Tree@{segment\+Tree}}
+\subsubsection{\texorpdfstring{modify()}{modify()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class d\+Type  = int, class t\+Type  = add\+Tag$<$d\+Type$>$, class upd  = add\+Update, class pushd  = add\+Pushdown$>$ \\
+void \mbox{\hyperlink{classsegment_tree}{segment\+Tree}}$<$ d\+Type, t\+Type, upd, pushd $>$\+::modify (\begin{DoxyParamCaption}\item[{int}]{pos,  }\item[{const t\+Type \&}]{tag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Modify a single element with tag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & index of modification \\
+\hline
+{\em tag} & tag to add to that element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsegment_tree_aba65a5a01fbca0df3e5a0aa541ca8111}\label{classsegment_tree_aba65a5a01fbca0df3e5a0aa541ca8111}} 
+\index{segment\+Tree@{segment\+Tree}!query@{query}}
+\index{query@{query}!segment\+Tree@{segment\+Tree}}
+\subsubsection{\texorpdfstring{query()}{query()}}
+{\footnotesize\ttfamily template$<$class d\+Type  = int, class t\+Type  = add\+Tag$<$d\+Type$>$, class upd  = add\+Update, class pushd  = add\+Pushdown$>$ \\
+d\+Type \mbox{\hyperlink{classsegment_tree}{segment\+Tree}}$<$ d\+Type, t\+Type, upd, pushd $>$\+::query (\begin{DoxyParamCaption}\item[{int}]{l,  }\item[{int}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Query (merge a range of values) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & start pos of query \\
+\hline
+{\em r} & end pos of query \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsegment_tree_a4b043b0364ab05a79dcb716bc6fce205}\label{classsegment_tree_a4b043b0364ab05a79dcb716bc6fce205}} 
+\index{segment\+Tree@{segment\+Tree}!replace@{replace}}
+\index{replace@{replace}!segment\+Tree@{segment\+Tree}}
+\subsubsection{\texorpdfstring{replace()}{replace()}}
+{\footnotesize\ttfamily template$<$class d\+Type  = int, class t\+Type  = add\+Tag$<$d\+Type$>$, class upd  = add\+Update, class pushd  = add\+Pushdown$>$ \\
+void \mbox{\hyperlink{classsegment_tree}{segment\+Tree}}$<$ d\+Type, t\+Type, upd, pushd $>$\+::replace (\begin{DoxyParamCaption}\item[{int}]{pos,  }\item[{const d\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Replace a single spot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & Index to replace \\
+\hline
+{\em val} & Data to put in that spot \\
+\hline
+\end{DoxyParams}

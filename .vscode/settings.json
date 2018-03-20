@@ -1,0 +1,20 @@
+{
+	"files.associations": {
+		"algorithm": "cpp",
+		"initializer_list": "cpp",
+		"xmemory": "cpp",
+		"xutility": "cpp",
+		"xiosbase": "cpp",
+		"xstring": "cpp",
+		"stdexcept": "cpp",
+		"exception": "cpp",
+		"ostream": "cpp",
+		"type_traits": "cpp",
+		"utility": "cpp",
+		"xmemory0": "cpp",
+		"xstddef": "cpp",
+		"xtr1common": "cpp",
+		"iostream": "cpp",
+		"limits": "cpp"
+	}
+}
