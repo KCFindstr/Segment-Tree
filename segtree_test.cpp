@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iostream>
 #include <cassert>
+#include <string>
 using namespace std;
 
 #if RAND_MAX <= SHRT_MAX
@@ -53,7 +54,7 @@ void bruteForceTest(int N) {
 				break;
 		}
 	}
-	cout << "TEST PASSED." << endl;
+	cout << "BRUTE FORCE TEST PASSED." << endl;
 	delete [] A;
 }
 
@@ -110,6 +111,7 @@ struct myUpdate {
 	}
 };
 
+// Different kinds of usage
 void functionalityTest() {
 	segmentTree<> T1(0, 10);
 	T1.modify(1, 9, 1);
@@ -177,6 +179,7 @@ void functionalityTest() {
 	cout << T4.query(1, 10).maxval << endl; // expect 8
 }
 
+// Large dataset
 void pressureTest(int N) {
 	int L = -100000000, R = 100000000;
 	unsigned int beg = clock();
@@ -209,13 +212,106 @@ void pressureTest(int N) {
 	cout << N << " operations, total time: " << (double)(ed-beg) / CLOCKS_PER_SEC << endl;
 }
 
+// v.s. DP on maximum interval sum
+void DPtest(int N) {
+	int L = rand() % 1000 - 500;
+	int R = rand() % 1000;
+	if (L > R)
+		swap(L, R);
+	// Create a segment tree
+	segmentTree<myData2, myTag, myUpdate, noPushDown> T(L, R);
+	int *A = new int[R-L+1]();
+	for (int _=0; _<N; _++) {
+		int l = rand() % (R-L+1) + L;
+		int len = rand() % (R-l+1);
+		int r = l + len;
+		int typ = rand() % 3;
+		int val = rand() % 1000 - 450;
+		switch (typ) {
+			case 0: // Single element replacement
+				A[l-L] = val;
+				T.replace(l, val);
+				break;
+			case 1: {// Range query
+				int ans = -0x3f3f3f3f, cur = -0x3f3f3f3f;
+				for (int i=0; i<=len; i++) {
+					int e = A[l-L+i];
+					cur = max(e, cur+e);
+					ans = max(ans, cur);
+				}
+				int ret = T.query(l, r).maxval;
+				if (ret != ans) {
+					cerr << "On querying " << l << "-" << r << endl;
+					cerr << " Expect " << ans << ", Get " << ret << endl;
+					throw runtime_error("Test failed"); 
+				}
+				break;
+			}
+			case 2: // Single element modification
+				A[l-L] += val;
+				T.modify(l, val);
+				break;
+			default:
+				break;
+		}
+	}
+	cout << "DP TEST PASSED." << endl;
+	delete [] A;
+}
+
+// Test exceptions
+void failureTest(){
+	try {
+		segmentTree<> T(1, 1);
+		T.modify(1, 2, 1);
+	} catch (const exception &e) {
+		cout << e.what() << endl;
+	}
+	try {
+		segmentTree<> T(1, 0);
+	} catch (const exception &e) {
+		cout << e.what() << endl;
+	}
+	try {
+		segmentTree<double> T(1, 10);
+		double ret = T.query(2, 8);
+		T.modify(8, 7, 0);
+		ret = T.query(0);
+	} catch (const exception &e) {
+		cout << e.what() << endl;
+	}
+	try {
+		segmentTree<string, noPushDownTag<string>, addUpdate, noPushDown> T(1, 10);
+		string ret = T.query(2, 8);
+		T.modify(8, 7, string("Hi"));
+		T.replace(0, string("what"));
+	} catch (const exception &e) {
+		cout << e.what() << endl;
+	}
+	try {
+		segmentTree<int> T(-1, 1);
+		int ret = T.query(0, -1);
+	} catch (const exception &e) {
+		cout << e.what() << endl;
+	}
+	try {
+		segmentTree<int> T(-1, 1);
+		T.modify(2, -1);
+	} catch (const exception &e) {
+		cout << e.what() << endl;
+	}
+	cout << "EXCEPTION TEST DONE" << endl;
+}
+
 int main() {
 	srand(time(0));
 	try {
 		functionalityTest();
+		failureTest();
 		for (int i=1; i<=10; i++) {
 			cout << "#" << i << " ";
 			bruteForceTest(100000);
+			DPtest(100000);
 		}
 		pressureTest(1000000);
 	} catch (const exception &e) {

@@ -50,7 +50,7 @@ struct noPushDownTag {
 /**
  * @brief Default update function for summing up values
  * 
- * Every update function must overload () to merge two
+ * Every update class must overload () to merge two
  * values.
  */
 struct addUpdate {
@@ -63,7 +63,7 @@ struct addUpdate {
 /**
  * @brief Default pushdown function for tag distribution
  * 
- * Every pushdown funtion must overload () to pushdown a tag.
+ * Every pushdown class must overload () to pushdown a tag.
  */
 struct addPushdown {
 	template <class T>
@@ -88,8 +88,8 @@ struct noPushDown {
  * @author changyuz@usc.edu
  * @tparam dType The type of data to store in the segment tree
  * @tparam tType The type of tag for range queries
- * @tparam upd The update function
- * @tparam pushd The pushdown function for tags
+ * @tparam upd The update class
+ * @tparam pushd The pushdown class for tags and range modification
  */
 template <class dType = int, class tType = addTag<dType>, class upd = addUpdate,
 	class pushd = addPushdown>
