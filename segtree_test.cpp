@@ -154,18 +154,6 @@ void functionalityTest() {
 	T3.replace(2, -1);
 	cout << T3.query(1, 10).maxval << endl; // expect 8
 
-	T3.clear(); // clear and do again
-	T3.replace(1, 4);
-	T3.replace(2, -5);
-	T3.replace(3, 3);
-	T3.replace(4, -1);
-	T3.replace(5, 3);
-	T3.replace(6, -1);
-	cout << T3.query(1, 10).maxval << endl; // expect 5
-	cout << T3.query(1, 3).maxval << endl; // expect 4
-	T3.modify(2, 4);
-	cout << T3.query(1, 10).maxval << endl; // expect 8
-
 	//same for T4
 	T4.modify(1, 4);
 	T4.replace(2, -5);
@@ -177,6 +165,23 @@ void functionalityTest() {
 	cout << T4.query(1, 3).maxval << endl; // expect 4
 	T4.replace(2, -1);
 	cout << T4.query(1, 10).maxval << endl; // expect 8
+
+	T3.clear(); // clear and do again
+	T3.replace(1, 4);
+	T3.replace(2, -5);
+	T3.replace(3, 3);
+	T3.replace(4, -1);
+	T3.replace(5, 3);
+	T3.replace(6, -1);
+	// Test copy
+	auto T5(T3);
+	cout << T5.query(1, 10).maxval << endl; // expect 5
+	cout << T5.query(1, 3).maxval << endl; // expect 4
+	T5.modify(2, 4);
+	cout << T5.query(1, 10).maxval << endl; // expect 8
+	cout << T3.query(1, 10).maxval << endl; // expect 5
+	T5 = T3;
+	cout << T5.query(1, 10).maxval << endl; // expect 5
 }
 
 // Large dataset

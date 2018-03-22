@@ -196,6 +196,19 @@ private:
 			return update(query(cur->l, l, mid), query(cur->r, mid+1, r));
 	}
 
+	// Copy from another tree
+	void copyFrom(Node* &cur, const Node* p) {
+		if (p == NULL) {
+			cur = NULL;
+			return;
+		}
+		cur = new Node(p->L, p->R);
+		cur->val = p->val;
+		cur->tag = p->tag;
+		copyFrom(cur->l, p->l);
+		copyFrom(cur->r, p->r);
+	}
+
 public:
 	/**
 	 * @brief Constructor of segment tree
@@ -213,6 +226,24 @@ public:
 	 */
 	~segmentTree() {
 		clear(root);
+	}
+
+	/**
+	 * @brief Copy Constructor
+	 * 
+	 */
+	segmentTree(const segmentTree<dType, tType, upd, pushd> &rhs) {
+		copyFrom(root, rhs.root);
+	}
+
+	/**
+	 * @brief Assignment operator
+	 * 
+	 */
+	segmentTree<dType, tType, upd, pushd> &operator = (const segmentTree<dType, tType, upd, pushd> &rhs) {
+		clear(root);
+		copyFrom(root, rhs.root);
+		return *this;
 	}
 
 	/**
